@@ -104,7 +104,12 @@ var keyCodes = {
     space: 32
 };
 
-var sequence = [];
+var getKeysFromSequence = function (sequence) {
+    var reg = /([^\+]+)|([^\+]+\+\+)|([^\+]+\+[^\+]+)+|([^\+]+\+[^\+]+)+\+/g;
+    return sequence.match(reg).map(function (item) {
+        return item.toLowerCase();
+    });
+};
 
 var KE = function (elemOrSelector) {
     var elem = typeof elemOrSelector === 'string'
@@ -114,17 +119,34 @@ var KE = function (elemOrSelector) {
     return KE;
 };
 
-KE.on = function (eventType, callback) {
-    this.elem.addEventListener(eventType, function (event) {
-        if (callback instanceof Function) {
-            callback(event);
+
+KE.register = function (sequence, callback) {
+    var seq = getKeysFromSequence(sequence);
+    var triggered = {};
+    this.elem.addEventListener('keydown', function (event) {
+        var kc = event.keyCode;
+        var i = 0, len = seq.length;
+        for (i = 0; i < len; i++) {
+            if (keyCodes.hasOwnProperty(seq[i]) && keyCodes[seq[i]] === kc) {
+                triggered[seq[i]] = true;
+                for (j = 0; j < len; j++) {
+                    if (!triggered[seq[j]]) {
+                        return;
+                    }
+                }
+                if (callback instanceof Function) {
+                    callback(event);
+                }
+            }
+        }
+    });
+    this.elem.addEventListener('keyup', function (event) {
+        var kc = event.keyCode;
+        var i = 0, len = seq.length;
+        for (i = 0; i < len; i++) {
+            if (keyCodes.hasOwnProperty(seq[i]) && keyCodes[seq[i]] === kc) {
+                triggered[seq[i]] = false;
+            }
         }
     });
 };
-
-sequence.forEach(function (item) {
-    var key = String(item).toLowerCase();
-    if (keyCodes.hasOwnProperty(key)) {
-
-    }
-});
