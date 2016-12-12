@@ -17,6 +17,7 @@ Also, it support jQuery and can be used as a plugin of jQuery.
 ## Examples
 
 1. jQuery
+
     ```
     <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
     <script src="keyCode.js"></script>
@@ -37,6 +38,7 @@ Also, it support jQuery and can be used as a plugin of jQuery.
     </script>
     ```
 2. Without jQuery
+
     ```
         <script src="keyCode.js"></script>
         window.onload = function () {
