@@ -7,26 +7,110 @@
     <title>Document</title>
     <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
     <script src="keyCode.js"></script>
+    <style>
+        body {
+            font-family: 'Microsoft Yahei';
+            color: #ccc;
+        }
+        p {
+            color: #999;
+            font-size: 14px;
+        }
+        div {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            width: 100%;
+            height: 80px;
+            font-size: 80px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <div class="key" style="width: 100%; height: 30px; backgroud: #eee;" contenteditable></div>
+    <p>
+        try to press thoes keys combination to test<br>
+        ctrl+F1 <br>
+        ctrl+x <br>
+        ctrl+/ <br>
+        ctrl+1 <br>
+        ctrl+space <br>
+        ctrl+enter <br>
+        ctrl+shift+F1 <br>
+        ctrl+shift+x <br>
+        ctrl+shift+1 <br>
+        ctrl+shift+/ <br>
+        ctrl+shift+space <br>
+        ctrl+shift+enter<br>
+        ctrl+shift+delete<br>
+        ctrl+shift+alt+x<br>
+        ctrl+shift+alt+1<br>
+        ctrl+shift+alt+/<br>
+        ctrl+shift+alt+delete<br>
+    </p>
+    <div></div>
     <script>
         window.onload = function () {
-            $('body').ke().register('ctrl+shift+k', function () {
-                console.log('ctrl+shift+k');
-            }).register('ctrl+k', function () {
-                console.log('ctrl+k');
-            }).register('alt+/', function () {
-                console.log('alt+/');
-            }).register('ctrl+.', function () {
-                console.log('ctrl+.');
-            }).register('ctrl+1', function () {
-                console.log('ctrl+1');
-            }).register('ctrl+N1', function () {
-                console.log('ctrl+N1');
-            }).register('ctrl+NUM_ADD', function () {
-                console.log('ctrl+N+');
-            }).trigger();
+            var textIt = function (text) {
+                $('div').text(text);
+            };
+            textIt('Try some registered keys combination');
+            $(window).ke()
+            .register('ctrl+F1', function () {
+                textIt('ctrl+F1');
+            })
+            .register('ctrl+x', function () {
+                textIt('ctrl+x');
+            })
+            .register('ctrl+/', function () {
+                textIt('ctrl+/');
+            })
+            .register('ctrl+1', function () {
+                textIt('ctrl+1');
+            })
+            .register('ctrl+space', function () {
+                textIt('ctrl+space');
+            })
+            .register('ctrl+enter', function () {
+                textIt('ctrl+enter');
+            })
+            .register('ctrl+shift+F1', function () {
+                textIt('ctrl+shift+F1');
+            })
+            .register('ctrl+shift+x', function () {
+                textIt('ctrl+shift+x');
+            })
+            .register('ctrl+shift+1', function () {
+                textIt('ctrl+shift+1');
+            })
+            .register('ctrl+shift+/', function () {
+                textIt('ctrl+shift+/');
+            })
+            .register('ctrl+shift+space', function () {
+                textIt('ctrl+shift+space');
+            })
+            .register('ctrl+shift+enter', function () {
+                textIt('ctrl+shift+enter');
+            })
+            .register('ctrl+shift+delete', function () {
+                textIt('ctrl+shift+delete');
+            })
+            .register('ctrl+shift+alt+x', function () {
+                textIt('ctrl+shift+alt+x');
+            })
+            .register('ctrl+shift+alt+1', function () {
+                textIt('ctrl+shift+alt+1');
+            })
+            .register('ctrl+shift+alt+/', function () {
+                textIt('ctrl+shift+alt+/');
+            })
+            .register('ctrl+shift+alt+delete', function () {
+                textIt('ctrl+shift+alt+delete');
+            })
+            .trigger();
         };
     </script>
 </body>
