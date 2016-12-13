@@ -56,6 +56,12 @@ Also, it support jQuery and can be used as a plugin of jQuery.
         };
     ```
 
+#### Attention
+
+`keyCode.js` based on DOM keydown event, so you can't register a long combination
+and it's child combination starting with the first key. For example, you can't
+use `ctrl+shift` and `ctrl+shift+p` as registered keys at the same time.
+
 #### Full support (with appropriate graphics drivers):
 * Firefox
 * Chrome
