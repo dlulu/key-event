@@ -3,7 +3,7 @@
 ## About
 
 Key combination is a javascript plugin to handle js combination keys event.
-Also, it support jQuery and can be used as a plugin of jQuery.
+Also, it supports jQuery and can be used as a plugin of jQuery.
 
 ## How to use
 1. Use with jQuery
